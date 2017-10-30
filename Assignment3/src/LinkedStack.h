@@ -57,7 +57,7 @@ inline T LinkedStack<T>::getTop()
 template<class T>
 inline void LinkedStack<T>::push(T value)
 {
-	Node<T>* newNode;
+	Node<T>* newNode = new Node<T>;
 	newNode->data = value;
 
 	if(isEmpty())
