@@ -25,6 +25,7 @@ class LinkedStack
 		T getTop();
 		void push(T value);
 		T pop();
+		virtual ~LinkedStack();
 };
 
 template<class T>
@@ -79,6 +80,12 @@ inline T LinkedStack<T>::pop()
 	top = top->next;
 
 	return data;
+}
+
+template<class T>
+inline LinkedStack<T>::~LinkedStack()
+{
+		top = NULL;
 }
 
 #endif /* LINKEDSTACK_H_ */
