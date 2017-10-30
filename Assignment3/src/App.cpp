@@ -14,14 +14,10 @@ using namespace std;
 
 int main()
 {
-	LinkedStack<Customer> stack;
 	BarberShop shop;
 	Customer customer1("MARK", "KILGORE");
 	Customer customer2("RICK", "GRIMM");
-	stack.push(customer1);
-
 	shop.addCustomer(customer1);
-	///*
 	shop.addCustomer(customer2);
 	Customer nextCustomer = shop.nextCustomer();
 	cout << nextCustomer.getName() << " is served next" << endl;
@@ -31,5 +27,4 @@ int main()
 	cout << nextCustomer.getName() << " is served next" << endl;
 	nextCustomer = shop.nextCustomer();
 	cout << nextCustomer.getName() << " is served next" << endl;
-	//*/
 }

@@ -14,7 +14,7 @@
 class BarberShop
 {
 	private:
-		LinkedStack<Customer> stack;
+		LinkedStack<Customer> queue;
 	public:
 		BarberShop();
 		void addCustomer(Customer customer);

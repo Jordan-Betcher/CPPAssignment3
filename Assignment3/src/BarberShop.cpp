@@ -9,17 +9,27 @@
 
 BarberShop::BarberShop()
 {
-	
+	this->queue = LinkedStack<Customer>();
 }
 
 void BarberShop::addCustomer(Customer customer)
 {
-	this->stack.push(customer);
+	LinkedStack<Customer> stack = LinkedStack<Customer>();
+	while(!queue.isEmpty())
+	{
+		stack.push(queue.pop());
+	}
+	stack.push(customer);
+
+	while(!stack.isEmpty())
+	{
+		queue.push(stack.pop());
+	}
 }
 
 Customer BarberShop::nextCustomer()
 {
-	return this->stack.pop();
+	return this->queue.pop();
 }
 
 BarberShop::~BarberShop()
