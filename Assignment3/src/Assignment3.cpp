@@ -7,9 +7,16 @@
 //============================================================================
 
 #include <iostream>
+#include "LinkedStack.h"
 using namespace std;
 
-int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+int main()
+{
+	LinkedStack<int> numbers;
+	cout << numbers.getSize() << endl;
+	numbers.push(3);
+	cout << numbers.getSize() << endl;
+	cout << numbers.getTop() << endl;
+	cout << numbers.pop() << endl;
 	return 0;
 }
