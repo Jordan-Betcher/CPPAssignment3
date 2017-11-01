@@ -20,6 +20,7 @@ class LinkedStack
 {
 		Node<T> *top;
 	public:
+		LinkedStack();
 		bool isEmpty();
 		int getSize();
 		T getTop();
@@ -27,6 +28,11 @@ class LinkedStack
 		T pop();
 		virtual ~LinkedStack();
 };
+
+template <class T>
+LinkedStack<T>::LinkedStack(){
+	top = NULL;
+}
 
 template<class T>
 inline bool LinkedStack<T>::isEmpty()
