@@ -10,9 +10,10 @@
 #include "LinkedStack.h"
 using namespace std;
 
+void printIntStack(LinkedStack<int> stack);
 void largeNumbersWithOnlyStack();
-LinkedStack<int> addIntStacks(LinkedStack<int> stackOfNumbers1, LinkedStack<int> stackOfNumbers2);
-LinkedStack<int> getIntQueueFromString(string largeNumber);
+LinkedStack<int> sumOfIntStack(LinkedStack<int> stackOfNumbers1, LinkedStack<int> stackOfNumbers2);
+LinkedStack<int> getIntStackFromString(string largeNumber);
 int getNumberFromChar(char character);
 void reverseNumber();
 
@@ -29,22 +30,17 @@ inline void largeNumbersWithOnlyStack()
 
 	cout << "Enter a very large number: ";
 	cin  >> largeNumber1;
-	//cout << "Enter a very large number Again: ";
-	//cin  >> largeNumber2;
+
+	cout << "Enter a very large number Again: ";
+	cin  >> largeNumber2;
 
 
-	LinkedStack<int> queueOfNumbers1 = getIntQueueFromString(largeNumber1);
-	//LinkedStack<int> queueOfNumbers2 = getIntQueueFromString(largeNumber2);
-	//LinkedStack<int> stackOfSum = queueOfNumbers1;
-///*
-	int number;
-	while(!queueOfNumbers1.isEmpty())
-	{
-		number = queueOfNumbers1.pop();
-		cout << number;
-	}
-//*/
-	cout << "End";
+	LinkedStack<int> stackOfNumbers1 = getIntStackFromString(largeNumber1);
+	LinkedStack<int> stackOfNumbers2 = getIntStackFromString(largeNumber2);
+	LinkedStack<int> stackOfSum = sumOfIntStack(stackOfNumbers1, stackOfNumbers2);
+
+	printIntStack(stackOfSum);
+
 	cout << endl;
 
 
@@ -52,11 +48,11 @@ inline void largeNumbersWithOnlyStack()
 
 }
 
-inline LinkedStack<int> getIntQueueFromString(string stringNumber)
+inline LinkedStack<int> getIntStackFromString(string stringNumber)
 {
 	LinkedStack<int> stackOfNumbers;
 
-	for(int i = stringNumber.size() - 1; i >= 0; i--)
+	for(int i = 0; i < stringNumber.size(); i++)
 	{
 		char charNumber = stringNumber[i];
 		int number = getNumberFromChar(charNumber);
@@ -70,34 +66,63 @@ inline int getNumberFromChar(char character)
 	return (character-'0');
 }
 
-inline LinkedStack<int> addIntStacks(LinkedStack<int> stackOfNumbers1,
+inline LinkedStack<int> sumOfIntStack(LinkedStack<int> stackOfNumbers1,
         LinkedStack<int> stackOfNumbers2)
 {
 	if(stackOfNumbers2.getSize() > stackOfNumbers1.getSize())
 	{
-		return addIntStacks(stackOfNumbers2, stackOfNumbers1);
+		return sumOfIntStack(stackOfNumbers2, stackOfNumbers1);
 	}
 	else
 	{
 		LinkedStack<int> stackOfSum;
 		int numberFrom1;
+		int carryOver = 0;
 
 		while(!stackOfNumbers1.isEmpty())
 		{
 			numberFrom1 = stackOfNumbers1.pop();
+			int sum = 0;
 
 			if(!stackOfNumbers2.isEmpty())
 			{
-
+				int numberFrom2 = stackOfNumbers2.pop();
+				sum = numberFrom1 + numberFrom2;
 			}
 			else
 			{
-				stackOfSum.push(numberFrom1);
+				sum = numberFrom1;
 			}
+
+			sum += carryOver;
+			carryOver = 0;
+
+			if(sum >= 10)
+			{
+				sum = sum % 10;
+				carryOver++;
+			}
+
+			stackOfSum.push(sum);
 		}
 
+		if(carryOver > 0)
+		{
+			stackOfSum.push(carryOver);
+		}
 		return stackOfSum;
 	}
+}
+
+inline void printIntStack(LinkedStack<int> stack)
+{
+	int number;
+	while(!stack.isEmpty())
+	{
+		number = stack.pop();
+		cout << number;
+	}
+	cout << endl;
 }
 
 inline void reverseNumber()
