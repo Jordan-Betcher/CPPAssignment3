@@ -9,7 +9,21 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+void reverseNumbers();
+
+int main()
+{
+	reverseNumbers();
 	return 0;
+}
+
+inline void reverseNumbers()
+{
+
+	int numberToReverse;
+
+	cout << "Enter a number to reverse: ";
+	cin  >> numberToReverse;
+
+
 }
