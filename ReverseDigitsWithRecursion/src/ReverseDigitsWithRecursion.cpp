@@ -21,12 +21,20 @@ int main()
 
 inline void reverseNumbers()
 {
-	string numberToReverse;
+	int numberToReverse;
 
-	cout << "Enter a number to reverse: ";
+	cout << "Enter a positive number to reverse: ";
 	cin  >> numberToReverse;
 
-	cout << reverseString(numberToReverse);
+	while(numberToReverse >= 0)
+	{
+
+		string stringToReverse = to_string(numberToReverse);
+		cout << reverseString(stringToReverse) << endl;
+
+		cout << "Enter a positive number to reverse: ";
+		cin  >> numberToReverse;
+	}
 }
 
 inline string reverseString(string stringToReverse)
