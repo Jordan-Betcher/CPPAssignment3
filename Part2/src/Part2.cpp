@@ -15,7 +15,6 @@ void largeNumbersWithOnlyStack();
 LinkedStack<int> sumOfIntStack(LinkedStack<int> stackOfNumbers1, LinkedStack<int> stackOfNumbers2);
 LinkedStack<int> getIntStackFromString(string largeNumber);
 int getNumberFromChar(char character);
-void reverseNumber();
 
 int main()
 {
@@ -123,8 +122,4 @@ inline void printIntStack(LinkedStack<int> stack)
 		cout << number;
 	}
 	cout << endl;
-}
-
-inline void reverseNumber()
-{
 }
