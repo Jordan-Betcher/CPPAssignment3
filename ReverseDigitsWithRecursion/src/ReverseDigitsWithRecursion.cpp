@@ -10,7 +10,6 @@
 using namespace std;
 
 void reverseNumbers();
-string reverseNumbers(int numbersToReverse);
 string reverseString(string stringToReverse);
 
 int main()
@@ -23,26 +22,18 @@ int main()
 //Takes a number from input and reverses it
 inline void reverseNumbers()
 {
-	int numberToReverse;
+	string numberToReverse;
 
 	cout << "Enter a positive number to reverse: ";
 	cin  >> numberToReverse;
 
-	while(numberToReverse >= 0)
+	while(numberToReverse.find("-"))
 	{
-		cout << reverseNumbers(numberToReverse) << endl;
+		cout << reverseString(numberToReverse) << endl;
 
 		cout << "Enter a positive number to reverse: ";
 		cin  >> numberToReverse;
 	}
-}
-
-//Takes a number and reverses it, returning it as a string
-inline string reverseNumbers(int numbersToReverse)
-{
-	string stringToReverse = to_string(numbersToReverse);
-	string reverseNumbers = reverseString(stringToReverse);
-	return reverseNumbers;
 }
 
 //Reverses a string using recursion
