@@ -7,17 +7,20 @@
 
 #include "Customer.h"
 
+//Creates the Customer Object
 Customer::Customer(std::string firstName, std::string lastName)
 {
-	this->firstName = firstName;
-	this->lastName = lastName;
+	this->mFirstName = firstName;
+	this->mLastName = lastName;
 }
 
+//Returns firstName and LastName as a single string
 std::string Customer::getName()
 {
-	return (firstName + " " + lastName);
+	return (mFirstName + " " + mLastName);
 }
 
+//Creates Default Customer so that it works with Stack
 Customer::Customer()
 {
 }

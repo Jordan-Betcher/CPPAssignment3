@@ -1,9 +1,9 @@
 //============================================================================
-// Name        : Part2.cpp
-// Author      : Jordan
-// Version     :
-// Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
+// Name        : SumLargeNumbers.cpp
+// Author      : Jordan Betcher
+// Date		   : 11/3/2017
+// Copyright   :
+// Description : Sums two large numbers from input using a stack.
 //============================================================================
 
 #include <iostream>
@@ -11,18 +11,19 @@
 using namespace std;
 
 void printIntStack(LinkedStack<int> stack);
-void largeNumbersWithOnlyStack();
+void sumTwolargeNumbersWithOnlyStack();
 LinkedStack<int> sumOfIntStack(LinkedStack<int> stackOfNumbers1, LinkedStack<int> stackOfNumbers2);
 LinkedStack<int> getIntStackFromString(string largeNumber);
 int getNumberFromChar(char character);
 
 int main()
 {
-	largeNumbersWithOnlyStack();
+	sumTwolargeNumbersWithOnlyStack();
 	return 0;
 }
 
-inline void largeNumbersWithOnlyStack()
+//Sums two large numbers from input using a stack.
+inline void sumTwolargeNumbersWithOnlyStack()
 {
 	string largeNumber1;
 	string largeNumber2;
@@ -41,34 +42,34 @@ inline void largeNumbersWithOnlyStack()
 	printIntStack(stackOfSum);
 
 	cout << endl;
-
-
-
-
 }
 
+//Returns a stack of numbers from a stack of strings that are numbers
 inline LinkedStack<int> getIntStackFromString(string stringNumber)
 {
 	LinkedStack<int> stackOfNumbers;
 
-	for(int i = 0; i < stringNumber.size(); i++)
+	for (int i = 0; i < stringNumber.size(); i++)
 	{
 		char charNumber = stringNumber[i];
 		int number = getNumberFromChar(charNumber);
 		stackOfNumbers.push(number);
 	}
+
 	return stackOfNumbers;
 }
 
+//Gets the number from character by minus-ing the 0 value character
 inline int getNumberFromChar(char character)
 {
-	return (character-'0');
+	return (character - '0');
 }
 
+//Returns the sum of two stacks
 inline LinkedStack<int> sumOfIntStack(LinkedStack<int> stackOfNumbers1,
         LinkedStack<int> stackOfNumbers2)
 {
-	if(stackOfNumbers2.getSize() > stackOfNumbers1.getSize())
+	if (stackOfNumbers2.getSize() > stackOfNumbers1.getSize())
 	{
 		return sumOfIntStack(stackOfNumbers2, stackOfNumbers1);
 	}
@@ -78,7 +79,7 @@ inline LinkedStack<int> sumOfIntStack(LinkedStack<int> stackOfNumbers1,
 		int numberFrom1;
 		int carryOver = 0;
 
-		while(!stackOfNumbers1.isEmpty())
+		while ( ! stackOfNumbers1.isEmpty())
 		{
 			numberFrom1 = stackOfNumbers1.pop();
 			int sum = 0;
@@ -96,7 +97,7 @@ inline LinkedStack<int> sumOfIntStack(LinkedStack<int> stackOfNumbers1,
 			sum += carryOver;
 			carryOver = 0;
 
-			if(sum >= 10)
+			if (sum >= 10)
 			{
 				sum = sum % 10;
 				carryOver++;
@@ -105,21 +106,24 @@ inline LinkedStack<int> sumOfIntStack(LinkedStack<int> stackOfNumbers1,
 			stackOfSum.push(sum);
 		}
 
-		if(carryOver > 0)
+		if (carryOver > 0)
 		{
 			stackOfSum.push(carryOver);
 		}
+
 		return stackOfSum;
 	}
 }
 
+//Prints the stack of ints
 inline void printIntStack(LinkedStack<int> stack)
 {
 	int number;
-	while(!stack.isEmpty())
+	while ( ! stack.isEmpty())
 	{
 		number = stack.pop();
 		cout << number;
 	}
+
 	cout << endl;
 }

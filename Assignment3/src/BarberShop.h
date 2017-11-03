@@ -1,8 +1,10 @@
 /*
- * BarberShop.h
- *
+ *  Name: BarberShop.h
+ *  Author: Jordan Betcher
  *  Created on: Oct 30, 2017
- *      Author: Betcher
+ *  Description: Keeps track of the next customer with first in first out.
+ *  Comment: Copied class over and added methods.
+ *  		 Can't change variable names as much as I would like to.
  */
 
 #ifndef BARBERSHOP_H_
@@ -24,31 +26,35 @@ class BarberShop
 		virtual ~BarberShop();
 };
 
+//Creates the BarberShop Object
 BarberShop::BarberShop()
 {
 	this->s1 = LinkedStack<Customer>();
 	this->s2 = LinkedStack<Customer>();
 }
 
+//Adds a customer to stack
 inline void BarberShop::addCustomer(Customer& customer)
 {
-	while(!s1.isEmpty())
+	while ( ! s1.isEmpty())
 	{
 		s2.push(s1.pop());
 	}
 	s2.push(customer);
 
-	while(!s2.isEmpty())
+	while ( ! s2.isEmpty())
 	{
 		s1.push(s2.pop());
 	}
 }
 
+//Pops next customer from stack
 inline Customer BarberShop::nextCustomer()
 {
 	return this->s1.pop();
 }
 
+//Destroys the BarberShop Object
 inline BarberShop::~BarberShop()
 {
 	// TODO Auto-generated destructor stub

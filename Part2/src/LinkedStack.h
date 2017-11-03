@@ -1,8 +1,10 @@
 /*
- * LinkedStack.h
- *
+ *  Name: LinkedStack.h
+ *  Author: Jordan Betcher
  *  Created on: Oct 30, 2017
- *      Author: Betcher
+ *  Description: Creates a Stack made of Nodes.
+ *  Comment: Copied class over and added methods.
+ *  		 Can't change variable names as much as I would like to.
  */
 
 #ifndef LINKEDSTACK_H_
@@ -29,17 +31,20 @@ class LinkedStack
 		virtual ~LinkedStack();
 };
 
+//Creates the LinkedStack Object
 template <class T>
 LinkedStack<T>::LinkedStack(){
 	top = NULL;
 }
 
+//Returns a bool of whether the stack is empty or not
 template<class T>
 inline bool LinkedStack<T>::isEmpty()
 {
 	return (top == NULL);
 }
 
+//Returns the size of the stack
 template<class T>
 inline int LinkedStack<T>::getSize()
 {
@@ -54,31 +59,34 @@ inline int LinkedStack<T>::getSize()
 	return count;
 }
 
+//Returns the top of the stack's data
 template<class T>
 inline T LinkedStack<T>::getTop()
 {
 	return top->data;
 }
 
+//Pushes a new value into the stack
 template<class T>
 inline void LinkedStack<T>::push(T value)
 {
-	Node<T>* newNode = new Node<T>;
-	newNode->data = value;
-	newNode->next = NULL;
+	Node<T> *pNewNode = new Node<T>;
+	pNewNode->data = value;
+	pNewNode->next = NULL;
 
-	if(isEmpty())
+	if (isEmpty())
 	{
-		top = newNode;
+		top = pNewNode;
 	}
 	else
 	{
-		newNode->next = top;
-		top = newNode;
+		pNewNode->next = top;
+		top = pNewNode;
 	}
 
 }
 
+//Returns the top data and removes the top from the stack
 template<class T>
 inline T LinkedStack<T>::pop()
 {
@@ -89,6 +97,7 @@ inline T LinkedStack<T>::pop()
 	return data;
 }
 
+//Destroys the stack
 template<class T>
 inline LinkedStack<T>::~LinkedStack()
 {

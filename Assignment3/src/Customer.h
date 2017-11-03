@@ -13,8 +13,8 @@
 class Customer
 {
 	private:
-		std::string firstName;
-		std::string lastName;
+		std::string mFirstName;
+		std::string mLastName;
 	public:
 		Customer();
 		Customer(std::string firstName, std::string lastName);
